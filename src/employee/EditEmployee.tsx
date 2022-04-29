@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { editEmployeeRequest } from '../redux/actions/employeeAction';
 // import { editEmployeeAPI } from '../redux/actions/EmployeeAction';
 
 function EditEmployee() {
@@ -8,7 +9,7 @@ function EditEmployee() {
     const data: any = useLocation().state;
     const navigation = useNavigate();
     const dispatch = useDispatch();
-    const employee = useSelector((state: any) => state.employee);
+    // const employee = useSelector((state: any) => state.employee);
 
     const [editEmployeeAPIData, seteditEmployeeAPIData] = useState({
         "email": data.email,
@@ -27,18 +28,51 @@ function EditEmployee() {
 
     const editEmployeeHandler = (e: any) => {
         e.preventDefault();
-        // dispatch(editEmployeeAPI(data.id, editEmployeeAPIData, onSucecss, onFailure));
+        dispatch(editEmployeeRequest(data.id, editEmployeeAPIData, onSuccess, onFailure));
     };
 
-    const onSucecss = () => {
+    const onSuccess = () => {
         navigation(-1);
     };
 
     const onFailure = () => {
 
-    }
+    };
 
     return (
+        // <div>
+        //     <div>EditEmployee</div>
+        //     <div>
+        //         <form onSubmit={editEmployeeHandler}>
+        //             <div>
+        //                 <label>First name</label>
+        //                 <input
+        //                     type="text"
+        //                     value={editEmployeeAPIData.firstName}
+        //                     onChange={(e: any) => { seteditEmployeeAPIData({ ...editEmployeeAPIData, 'firstName': e.target.value }) }} />
+        //             </div>
+        //             <div>
+        //                 <label>Mobile</label>
+        //                 <input
+        //                     type="number"
+        //                     value={editEmployeeAPIData.mobile}
+        //                     onChange={(e: any) => { seteditEmployeeAPIData({ ...editEmployeeAPIData, 'mobile': e.target.value }) }} />
+        //             </div>
+        //             <div>
+        //                 <label>Salary</label>
+        //                 <input
+        //                     type="number"
+        //                     value={editEmployeeAPIData.salary}
+        //                     onChange={(e: any) => { seteditEmployeeAPIData({ ...editEmployeeAPIData, 'salary': parseInt(e.target.value) }) }} />
+        //             </div>
+        //             <div>
+        //                 <button
+        //                     type="submit"
+        //                 >Submit</button>
+        //             </div>
+        //         </form>
+        //     </div>
+        // </div>
         <div>
             <div>EditEmployee</div>
             <div>

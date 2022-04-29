@@ -17,9 +17,9 @@ function Template() {
         <Route path="/login" element={<Login />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<EmployeeList />} />
-          {/* <Route path='/edit-employee' element={<EditEmployee />} />
+          <Route path='/edit-employee' element={<EditEmployee />} />
           <Route path='/add-employee' element={<AddEmplyee />} />
-          <Route path="/add-payroll" element={<AddPayroll />} />
+          {/* <Route path="/add-payroll" element={<AddPayroll />} />
           <Route path="/appraisal" element={<Appraisal />} /> */}
         </Route>
         <Route path="*" element={<Notfound />} />

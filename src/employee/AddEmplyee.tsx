@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { addEmployeeRequest } from '../redux/actions/employeeAction';
 // import { addEmployeeAPI } from '../redux/actions/EmployeeAction';
 
 function AddEmplyee() {
@@ -24,7 +25,7 @@ function AddEmplyee() {
 
     const onSubmitHandler = (e: any) => {
         e.preventDefault();
-        // dispatch(addEmployeeAPI(data, onSuccess, onFailure));
+        dispatch(addEmployeeRequest(data, onSuccess, onFailure));
     };
 
     const onSuccess = () => {

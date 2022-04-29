@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { employeeRequest } from '../redux/actions/employeeAction';
 import './style.css';
 
 function EmployeeList() {
@@ -8,9 +9,10 @@ function EmployeeList() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const employeeData = useSelector((state: any) => state.employee);
+    console.log("employeeData", employeeData);
 
     useEffect(() => {
-        // dispatch(fetchEmployeeList());
+        dispatch(employeeRequest());
     }, []);
 
     const addEmployeeHandler = () => {
@@ -31,8 +33,8 @@ function EmployeeList() {
                         <th>salary</th>
                         <th>Actions</th>
                     </tr>
-                    {/* {
-                        employeeData.employee?.data && employeeData.employee?.data?.length > 0 && employeeData.employee?.data?.map((item: any, index: number) => {
+                    {
+                        employeeData.employee && employeeData.employee?.length > 0 && employeeData.employee?.map((item: any, index: number) => {
                             return (
                                 <tr>
                                     <td>{item?.id}</td>
@@ -47,7 +49,7 @@ function EmployeeList() {
                                 </tr>
                             )
                         })
-                    } */}
+                    }
                 </table>
             </div>
         </>
